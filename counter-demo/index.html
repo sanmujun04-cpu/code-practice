@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器示例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background: white;
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .counter-display {
+            font-size: 72px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 20px 0;
+            min-width: 150px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-decrease {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-decrease:hover {
+            background: #ee5a5a;
+            transform: translateY(-2px);
+        }
+
+        .btn-reset {
+            background: #feca57;
+            color: #333;
+        }
+
+        .btn-reset:hover {
+            background: #f9bf3b;
+            transform: translateY(-2px);
+        }
+
+        .btn-increase {
+            background: #1dd1a1;
+            color: white;
+        }
+
+        .btn-increase:hover {
+            background: #10ac84;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #888;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>计数器示例</h1>
+        <div class="counter-display" id="counter">0</div>
+        <div class="button-group">
+            <button class="btn-decrease" onclick="decrease()">-</button>
+            <button class="btn-reset" onclick="reset()">重置</button>
+            <button class="btn-increase" onclick="increase()">+</button>
+        </div>
+        <p class="footer">Learning Helper Skill Demo</p>
+    </div>
+
+    <script>
+        let count = 0;
+        const display = document.getElementById('counter');
+
+        function updateDisplay() {
+            display.textContent = count;
+            // 添加动画效果
+            display.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                display.style.transform = 'scale(1)';
+            }, 100);
+        }
+
+        function increase() {
+            count++;
+            updateDisplay();
+        }
+
+        function decrease() {
+            count--;
+            updateDisplay();
+        }
+
+        function reset() {
+            count = 0;
+            updateDisplay();
+        }
+    </script>
+</body>
+</html>
